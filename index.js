@@ -39,11 +39,24 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
    2. Alınan dizinin bir kopyasını döndür
 */
 
+console.clear();
+function kopyala(kopyanacakDizi){
+  return [...kopyanacakDizi];
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
 }
+console.log("başlangıç");
+console.log(kopyala(orijinalTatlar));
+console.log(orijinalTatlar.length);
 
+  //şöyle de olur:
+   //let c=  [...kopyanacakDizi];
+   //return c;
+
+//şunu yapamıyoruz:
+//return kopyalanacakdizi=orijinaltatlar
+//iki farklı değişken aynı yeri gösteriyot böyle
+//bizim gerçek bir kopyalama yapmamız gerek
+//bunun için birkaç yol var bir tanesi: [...dizinin adı]
 
 /* Görev 2:
 Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları kabul etmelidir:
@@ -56,10 +69,17 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 */
 
 
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(array){
+ if (array.length == 25 ){
+  return true
+ }
+ else{
+  return false
+ }
 }
+console.log(dizi25Cesitmi(orijinalTatlar));
 
+//2 eşittile 3 eşittir arasındaki fark 3 eşittirde tipinin de aynı olması bekleniyor
 
 /* Görev 3:
 Pastane sahibi size yeni bir lezzet fikriyle geldi: Kakule! Bunun da çok tutacağından çok emin. Bu lezzeti eklemek için diziyi değiştirmeniz gerekir.
@@ -74,10 +94,16 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
 */
 
 
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+function cesitEkle(cesitEklenecekDizi, eklenecekTat){
+cesitEklenecekDizi.unshift (eklenecekTat);
+return cesitEklenecekDizi;
+//eğer return kısmına cesitEklenecekDizi.unshift (eklenecekTat) yazarsam 26 değerini döndürüyor fonksiyon
+ //push diyince sona unshift diyince başa ekliyor
 }
 
+console.log(cesitEkle(orijinalTatlar, "Kakule"));
+console.log("üçüncü görev bitti artık " + orijinalTatlar.length +" çeşit var");
+//artık orijinal hali buna dönüştü
 
 /* Cörev 4:
 
@@ -92,9 +118,37 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
 */
 
 
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(cesitKaldirilacakDizi){
+
+   cesitKaldirilacakDizi.pop();
+   return cesitKaldirilacakDizi;
+
+// pop metodu sondaki elemanı kaldırır.   
+//  return cesitKaldirilacakDizi.pop(); diyince vanilyayı basıyor çünkü pop metodu çıkarılmış elemanı döndürür
+//biz diziyi bassın istiyoruz
+//metodun return ettiği değer bizim için önemli bu yüzden
 }
+
+//console.log(orijinalTatlar);
+//console.log("deneme");
+
+sonCesitiKaldir(orijinalTatlar);
+console.log(orijinalTatlar);
+console.log("dördüncü görev bitti tekrar " + orijinalTatlar.length +" çeşit var");
+
+//console.log(orijinalTatlar);
+//console.log(sonCesitiKaldir(orijinalTatlar));
+//console.log("deneme");
+//console.log(orijinalTatlar);
+
+
+
+
+//Pop() dizinin son öğesini kaldırır. ve orijinal arrayi değiştirir
+// length değerini bir azaltarak da sondaki ögeyi silebilirsin
+//shift() dizinin ilk öğesini kaldırır
+//Splice(x, y)  İlk argüman, öğeleri eklemeye veya kaldırmaya başlayacağınız yeri belirler. İkinci argüman kaldırılacak öğe sayısını belirtir.
+//Üçüncü ve sonraki argümanlar isteğe bağlıdır; diziye eklenecek öğeleri belirtirler.
 
 
 /* Görev 5:
@@ -108,10 +162,12 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(dizi, istenenEleman){
+return dizi[istenenEleman]
 }
-
+console.log (indekstekiCesitiGetir(orijinalTatlar, 2));
+console.log("beşinci görev bitti " + indekstekiCesitiGetir(orijinalTatlar, 2)+ " çeşidini yazdırdık");
+//yine 1. eleman 0 ile gösterilir unutma
 
 /* Görev 6:
 
@@ -127,10 +183,22 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
 
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
+//Splice(x, y)  İlk argüman, öğeleri eklemeye veya kaldırmaya başlayacağınız yeri belirler. İkinci argüman kaldırılacak öğe sayısını belirtir.
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+//x konumunu gösterir, yine 1. eleman 0. konumda
+//y kaç eleman çıkarmak istediğini gösterir.
+//eğer x konumuna yeni elemanlar eklemek istiyorsan "elma", "armut" diyip ekleyebilirsin.
+
+
+function ismeGoreCesitCikar(dizi, tat){
+
+  let indeks = dizi.indexOf(tat);
+  // tat kısmına biz string bir değer giriyoruz bunu sayıya dönüştürdük indeksof la
+    dizi.splice(indeks, 1);
+  return dizi
 }
+
+console.log(ismeGoreCesitCikar(orijinalTatlar, "Tarçın"));
 
 
 /* Görev 7:
@@ -154,11 +222,34 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 */
 
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+
+console.log("7.görev");
+
+//console.log(orijinalTatlar.includes("Çikolata"));  ---> false döner string değerlerde tam eşleşme arıyor
+//console.log(orijinalTatlar.includes("Çikolata", 6));  ---> aynı şekilde false döner. yukarıda tüm dizide arıyor, yanına sayı ekleyerek spesifik bir noktada arayabilirsin
+//console.log(orijinalTatlar[6].includes("Çikolata")); --->true döner
+
+
+function ismeGoreFiltrele(dizi, tat){
+  let yenidizi=[]; 
+
+for(let i=0; i< dizi.length; i++){
+
+  if (dizi[i].includes(tat)==true){ 
+    //true yerine 1 desen de çalışıyor. ama ===1 dersen çalışmıyor.
+    //hiçbir şey demezsen de çalışıyor çünkü zaten doğruysa ifin içine giriyor
+
+    console.log("if çalışıyor");
+    yenidizi.push(dizi[i]);
+
+      // yenidizi.push(dizi(i)); bu hata veriyor
+} 
 }
+return yenidizi
+}
+console.log(ismeGoreFiltrele(orijinalTatlar, "Çikolata"));
 
-
+// if (dizi.includes(tat, i)==true){
 
 /* ALIŞTIRMA */
 
