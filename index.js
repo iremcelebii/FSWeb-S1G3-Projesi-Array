@@ -232,7 +232,7 @@ console.log("7.görev");
 
 function ismeGoreFiltrele(dizi, tat){
   let yenidizi=[]; 
-
+//diziyi for döngüsünün içine koyarsan her çalıştığında dizi sıfırlanır. ki zaten return bulamayacağı için hata verecek
 for(let i=0; i< dizi.length; i++){
 
   if (dizi[i].includes(tat)==true){ 
@@ -263,10 +263,30 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
 
-function ortalamaKelimeSayisi(/*kod buraya*/){
-  /*kod buraya*/
+function ortalamaKelimeSayisi(dizi){
+let toplamKelime=0;
+for(let i=0; i<dizi.length; i++){
+  toplamKelime++;
+if (dizi[i].includes(" "))
+toplamKelime++;
 }
 
+return toplamKelime/dizi.length
+}
+console.log(ortalamaKelimeSayisi(orijinalTatlar));
+
+function dahaDogrusu (dizi){
+// let kelimeler = dizi.split(" "); bu şekilde yazamıyoruz çünkü diziyi split edemezsin
+
+let toplamKelime=0;
+for(let i=0; i<dizi.length; i++){
+let kelimeler = dizi[i].split(" ");
+toplamKelime +=kelimeler.length;
+}
+return toplamKelime/dizi.length;
+}
+
+console.log (dahaDogrusu(orijinalTatlar));
 
 /* ALIŞTIRMA 2:
 Firma mevcut tatların yanında artık mevsimlik lezzetler ve hatta bölgesel lezzetler de sunmaktadır. Toplam 25 lezzet aromasını
